@@ -1,1 +1,3 @@
-Loan prediction sysytem using ML
+
+Loan prediction system using ML
+
