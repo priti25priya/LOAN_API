@@ -1,35 +1,62 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import numpy as np
 import joblib
 import os
 
+# ✅ Initialize FastAPI instance
 app = FastAPI()
 
-# ✅ Ensure the correct paths for your model and scaler
-scaler_path = "C:/Users/Priti Priya/Downloads/loan_api/scaler.pkl"
-model_path = "C:/Users/Priti Priya/Downloads/loan_api/loan_model.pkl"
+# ✅ Model and Scaler Paths
+SCALER_PATH = "C:/Users/Priti Priya/Downloads/loan_api/scaler.pkl"
+MODEL_PATH = "C:/Users/Priti Priya/Downloads/loan_api/loan_model.pkl"
 
-if os.path.exists(scaler_path) and os.path.exists(model_path):
-    scaler = joblib.load(scaler_path)
-    model = joblib.load(model_path)
-else:
-    raise FileNotFoundError("Scaler or model file not found. Ensure the correct path.")
+# ✅ Function to load model & scaler safely
+def load_model(path):
+    if os.path.exists(path):
+        return joblib.load(path)
+    else:
+        raise FileNotFoundError(f"❌ Error: {path} not found! Ensure the correct file path.")
 
-# ✅ Define request model
+try:
+    scaler = load_model(SCALER_PATH)
+    model = load_model(MODEL_PATH)
+except FileNotFoundError as e:
+    raise RuntimeError(f"❌ Critical: {str(e)}")
+
+# ✅ Define Pydantic model for request validation
 class LoanData(BaseModel):
-    features: list
+    applicant_income: float
+    coapplicant_income: float
+    loan_amount: float
+    loan_term: float
+    credit_history: float
 
 @app.post("/predict")
 def predict_loan_status(data: LoanData):
+    """Predicts loan approval status based on given financial details"""
     try:
-        loan_features = np.array(data.features).reshape(1, -1)
+        # ✅ Convert input data into a NumPy array
+        loan_features = np.array([
+            data.applicant_income, 
+            data.coapplicant_income, 
+            data.loan_amount, 
+            data.loan_term, 
+            data.credit_history
+        ]).reshape(1, -1)
 
         # ✅ Scale input before prediction
         loan_scaled = scaler.transform(loan_features)
         loan_prediction = model.predict(loan_scaled)[0]
-        loan_status = "Approved" if loan_prediction == 1 else "Rejected"
+        loan_status = "Approved ✅" if loan_prediction == 1 else "Rejected ❌"
 
         return {"Loan Status Prediction": loan_status}
+
     except Exception as e:
-        return {"error": str(e)}
+        raise HTTPException(status_code=500, detail=f"❌ Error during prediction: {str(e)}")
+
+@app.get("/")
+def home():
+    return {"message": "Loan Approval Prediction API is running!"}
+
+print("✅ API setup complete! Ready for loan predictions.")

@@ -1,20 +1,45 @@
+import numpy as np
+import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
-import joblib
-import numpy as np
 
 # ✅ Sample training data
-X_train = np.array([[5000, 35, 2], [3000, 42, 1], [7000, 29, 3]])
-y_train = np.array([1, 0, 1])  # Approved (1) or Rejected (0)
+X_train = np.array([
+    [5849, 0, 128, 360, 1], 
+    [4583, 1508, 66, 360, 1], 
+    [3000, 0, 120, 360, 1], 
+    [2583, 2358, 141, 360, 1], 
+    [6000, 0, 90, 180, 0]
+])  # Columns: [ApplicantIncome, CoapplicantIncome, LoanAmount, Loan_Amount_Term, Credit_History]
 
-# ✅ Train & Save Scaler
+y_train = np.array([1, 0, 1, 1, 1])  # Loan approved (1) or rejected (0)
+
+# ✅ Scale the data
 scaler = StandardScaler()
-scaler.fit(X_train)
-joblib.dump(scaler, "C:/Users/Priti Priya/Downloads/loan_api/scaler.pkl")
+X_train_scaled = scaler.fit_transform(X_train)
 
-# ✅ Train & Save Model
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-joblib.dump(model, "C:/Users/Priti Priya/Downloads/loan_api/loan_model.pkl")
+# ✅ Define class to store model objects
+class LoanApprovalModel:
+    def __init__(self, model_name, model, scaler):
+        self.model_name = model_name
+        self.model = model
+        self.scaler = scaler
+    
+    def predict(self, X_new):
+        X_transformed = self.scaler.transform(X_new)
+        return self.model.predict(X_transformed)
 
-print("✅ Scaler and model saved successfully!")
+# ✅ Train model and store as an object
+model_list = []
+
+rf_model = RandomForestClassifier()
+rf_model.fit(X_train_scaled, y_train)
+
+# Store trained model in the object list
+model_list.append(LoanApprovalModel("RandomForest", rf_model, scaler))
+
+# ✅ Save trained model & scaler
+joblib.dump(rf_model, "loan_model.pkl")
+joblib.dump(scaler, "scaler.pkl")
+
+print("✅ Model trained successfully and stored as an object!")

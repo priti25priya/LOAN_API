@@ -1,7 +1,13 @@
-from fastapi import FastAPI
+import requests
 
-app = FastAPI()
+url = "http://127.0.0.1:8000/predict"
+data = {
+    "applicant_income": 5000,
+    "coapplicant_income": 0,
+    "loan_amount": 128,
+    "loan_term": 360,
+    "credit_history": 1
+}
 
-@app.get("/")
-def health_check():
-    return {"message": "FastAPI is running!"}
+response = requests.post(url, json=data)
+print(response.json())
