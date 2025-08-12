@@ -38,9 +38,13 @@ README.md – Project documentation and usage instructions
 ```bash
 git clone https://github.com/priti25priya/loan-prediction-system.git
 cd loan-prediction-system
-2️⃣ Install Dependencies
 pip install fastapi uvicorn xgboost pandas scikit-learn joblib
-3️⃣ Start the FastAPI Server
-uvicorn loan_api:app --reload
-4️⃣ API Testing with Postman
+
+
+ ### 🧠 Train the Model
+python train_model.py
+### 🌐 Launch the API
+uvicorn loan_api:app –reload
+### 🧪 Test the API with Postman
+
 
