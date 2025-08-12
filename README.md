@@ -43,7 +43,7 @@ A FastAPI-based machine learning API that predicts loan approval based on applic
 ### 📁 **Clone the Repository**
 
 1. git clone https://github.com/priti25priya/LOAN_API.git
-2. cd loan-prediction-system
+2. cd "path"(LOAN_API)
 
 
 ---
