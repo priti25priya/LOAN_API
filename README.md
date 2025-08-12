@@ -40,6 +40,11 @@ git clone https://github.com/priti25priya/loan-prediction-system.git
 cd loan-prediction-system
 pip install fastapi uvicorn xgboost pandas scikit-learn joblib
 
+### 2️⃣ Install Dependencies
+```bash
+pip install fastapi uvicorn xgboost pandas scikit-learn joblib
+
+
 
  ### 🧠 Train the Model
 python train_model.py
