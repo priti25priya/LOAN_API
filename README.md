@@ -16,13 +16,19 @@ A machine learning-powered API that predicts loan approval based on applicant da
 
 ## 📁 Project Structure
 
-loan_api.py # FastAPI app to serve predictions
-preprocess.py # Data cleaning and feature engineering
-train_model.py # Model training and saving
-test_api.py # Script to test the API
-loan_model.pkl # Trained XGBoost model
-scaler.pkl # Scaler for input normalization
-README.md # Project documentation
+loan_api.py – FastAPI app that serves loan approval predictions
+
+preprocess.py – Handles data cleaning and feature engineering
+
+train_model.py – Trains the XGBoost model and saves it using Joblib
+
+test_api.py – Script to test the API with sample inputs
+
+loan_model.pkl – Serialized XGBoost model for prediction
+
+scaler.pkl – Scaler object used to normalize input features
+
+README.md – Project documentation and usage instructions
 
 ---
 
