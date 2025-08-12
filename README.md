@@ -41,7 +41,7 @@ A FastAPI-based machine learning API that predicts loan approval based on applic
 ## 🚀 Getting Started
 
 ### 📁 **Clone the Repository**
-'''bash
+
 git clone https://github.com/priti25priya/loan-prediction-system.git
 cd loan-prediction-system
 
@@ -49,13 +49,13 @@ cd loan-prediction-system
 ---
 
 ### 📦 **Install Dependencies**
-'''bash
+
 pip install fastapi uvicorn xgboost pandas scikit-learn joblib
 
 ---
 
 ### 🧠 **Train the Model**
-'''bash
+
 python train_model.py
 This will create:
 1. loan_model.pkl - Trained XGBoost model
@@ -64,9 +64,11 @@ This will create:
 ---
 
 ### 🚀 **Launch the API**
-'''bash
+
 uvicorn loan_api:app --reload
 
 ---
 
 ### 🧪 **Test the API with Postman**
+
+Endpoint: POST http://127.0.0.1:8000/predict
