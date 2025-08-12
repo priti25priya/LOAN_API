@@ -32,24 +32,34 @@ README.md – Project documentation and usage instructions
 
 ---
 
-## 🛠️ Setup Instructions
+# 🏦 Loan Prediction System
 
-### 1️⃣ Clone the Repository
+A FastAPI-based machine learning API that predicts loan approval based on applicant details. Built using XGBoost, pandas, and scikit-learn.
+
+---
+
+## 🚀 Getting Started
+
+### 📁 **Clone the Repository**
+
 ```bash
 git clone https://github.com/priti25priya/loan-prediction-system.git
 cd loan-prediction-system
-pip install fastapi uvicorn xgboost pandas scikit-learn joblib
 
-#### 2️⃣ **Install Dependencies**
+# 🏦 Loan Prediction System
+
+A FastAPI-based machine learning API that predicts loan approval based on applicant details. Built using XGBoost, pandas, and scikit-learn.
+
+---
+
+## 🚀 Getting Started
+
+#### 📁 **Clone the Repository**
+
 ```bash
-pip install fastapi uvicorn xgboost pandas scikit-learn joblib
+git clone https://github.com/priti25priya/loan-prediction-system.git
+cd loan-prediction-system
 
 
-
- ##### 🧠 Train the Model
-python train_model.py
-###### 🌐 Launch the API
-uvicorn loan_api:app –reload
-####### 🧪 Test the API with Postman
 
 
