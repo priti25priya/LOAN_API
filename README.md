@@ -42,11 +42,5 @@ A FastAPI-based machine learning API that predicts loan approval based on applic
 
 ### 📁 **Clone the Repository**
 
-```bash
-
-
-
-
-
-
+---
 
