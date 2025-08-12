@@ -46,19 +46,7 @@ A FastAPI-based machine learning API that predicts loan approval based on applic
 git clone https://github.com/priti25priya/loan-prediction-system.git
 cd loan-prediction-system
 
-# 🏦 Loan Prediction System
 
-A FastAPI-based machine learning API that predicts loan approval based on applicant details. Built using XGBoost, pandas, and scikit-learn.
-
----
-
-## 🚀 Getting Started
-
-#### 📁 **Clone the Repository**
-
-```bash
-git clone https://github.com/priti25priya/loan-prediction-system.git
-cd loan-prediction-system
 
 
 
