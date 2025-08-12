@@ -16,35 +16,25 @@ A machine learning-powered API that predicts loan approval based on applicant da
 
 ## 📁 Project Structure
 
-├── loan_api.py # FastAPI app to serve predictions
-├── preprocess.py # Data cleaning and feature engineering
-├── train_model.py # Model training and saving
-├── test_api.py # Script to test the API 
-├── loan_model.pkl # Trained XGBoost model 
-├── scaler.pkl # Scaler for input normalization 
-├── README.md # Project documentation
-
+loan_api.py # FastAPI app to serve predictions
+preprocess.py # Data cleaning and feature engineering
+train_model.py # Model training and saving
+test_api.py # Script to test the API
+loan_model.pkl # Trained XGBoost model
+scaler.pkl # Scaler for input normalization
+README.md # Project documentation
 
 ---
 
 ## 🛠️ Setup Instructions
 
-### 1. Clone the Repository
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/priti25priya/loan-prediction-system.git
 cd loan-prediction-system
-
-### 2. Install Dependencies
+2️⃣ Install Dependencies
 pip install fastapi uvicorn xgboost pandas scikit-learn joblib
-
-### 3. Start the FastAPI Server
+3️⃣ Start the FastAPI Server
 uvicorn loan_api:app --reload
-
-### 4. API Testing with Postman
-
-<img width="761" height="338" alt="image" src="https://github.com/user-attachments/assets/b728d018-4f99-4e71-bd7f-cfce06829ebe" />
-
-
-
-
+4️⃣ API Testing with Postman
 
